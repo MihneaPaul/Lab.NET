@@ -12,7 +12,6 @@ namespace Lab1
         public static void Main(string[] args)
         {
             var host = CreateWebHostBuilder(args).Build();
-
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -27,10 +26,8 @@ namespace Lab1
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
-
             host.Run();
         }
-
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
