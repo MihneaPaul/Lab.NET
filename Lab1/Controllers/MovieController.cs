@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Lab1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lab1.Controllers
 {
@@ -17,11 +19,34 @@ namespace Lab1.Controllers
             this.context = context;
         }
 
+        //// GET: api/Movie
+        //[HttpGet(Name = "Get all")]
+        //public IEnumerable<Movie> GetAll()
+        //{
+        //    return context.Movies;
+        //}
+
         // GET: api/Movie
-        [HttpGet]
-        public IEnumerable<Movie> Get()
+        [HttpGet(Name = "Get by date interval")]
+        public IEnumerable<Movie> Get([FromQuery]DateTime? from, [FromQuery]DateTime? to)
         {
-            return context.Movies;
+            IQueryable<Movie> result = context.Movies.Include(f => f.Comments).OrderByDescending(f => f.ReleseYear);
+
+            if (from == null && to == null)
+            {
+                return result;
+            }
+            if (from != null)
+            {
+                result = result.Where(f => f.DateAdded > from);
+            }
+            if (to != null)
+            {
+                result = result.Where(f => f.DateAdded < to);
+            }
+
+
+            return result.ToList();
         }
 
         // GET: api/Movie/5
@@ -73,6 +98,19 @@ namespace Lab1.Controllers
                 return NotFound();
             }
             context.Movies.Remove(found);
+            context.SaveChanges();
+            return Ok();
+        }
+
+        // DELETE ALL
+        [HttpDelete]
+        public IActionResult DeleteAll()
+        {
+            foreach (var entity in context.Movies)
+            {
+                context.Movies.Remove(entity);
+            }
+
             context.SaveChanges();
             return Ok();
         }
