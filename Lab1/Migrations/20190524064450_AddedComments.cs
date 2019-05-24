@@ -16,7 +16,7 @@ namespace Lab1.Migrations
             migrationBuilder.RenameColumn(
                 name: "Runtime",
                 table: "Movies",
-                newName: "ReleseYear");
+                newName: "ReleaseYear");
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "DateAdded",
@@ -100,7 +100,7 @@ namespace Lab1.Migrations
                 table: "Movies");
 
             migrationBuilder.RenameColumn(
-                name: "ReleseYear",
+                name: "ReleaseYear",
                 table: "Movies",
                 newName: "Runtime");
 

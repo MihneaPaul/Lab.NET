@@ -35,7 +35,7 @@ namespace Lab1.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Lab1.Models.Movie", b =>
@@ -56,7 +56,7 @@ namespace Lab1.Migrations
 
                     b.Property<double>("Rating");
 
-                    b.Property<int>("ReleseYear");
+                    b.Property<int>("ReleaseYear");
 
                     b.Property<string>("Title")
                         .HasMaxLength(100);

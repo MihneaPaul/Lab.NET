@@ -24,13 +24,13 @@ namespace Lab1.Models
         [EnumDataType(typeof(Genre))]
         public Genre MovieGenre { get; set; }
         public int DurationInMinutes { get; set; }
-        public int ReleseYear { get; set; }
+        public int ReleaseYear { get; set; }
         public string Director { get; set; }
         public DateTime DateAdded { get; set; }
         [Range(1, 10)]
         public double Rating { get; set; }
         [EnumDataType(typeof(Watched))]
         public Watched WasWatched { get; set; }
-        public List<Comment> Comments { get; set; }
+        public List<Comment> Comment { get; set; }
     }
 }

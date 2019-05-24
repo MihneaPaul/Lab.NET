@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab1.Migrations
 {
     [DbContext(typeof(IntroDbContext))]
-    [Migration("20190524064450_AddedComments")]
-    partial class AddedComments
+    [Migration("20190524104828_ChangedReleaseYear")]
+    partial class ChangedReleaseYear
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace Lab1.Migrations
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Lab1.Models.Movie", b =>

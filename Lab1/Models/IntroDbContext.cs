@@ -12,5 +12,6 @@ namespace Lab1.Models
         {
         }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Comment> Comment { get; set; }
     }
 }
