@@ -20,6 +20,7 @@ namespace Lab1.Controllers
         public MovieController(IMovieService movieService)
         {
             this.movieService = movieService;
+        
         }
 
         /// <summary>
